@@ -11,7 +11,7 @@ export default function PersonelList() {
     personelService
       .getPersonels()
       .then((result) => setPersonels(result.data.data));
-  });
+  }, []);
 
   return (
     <div>
