@@ -1,12 +1,21 @@
 import React from "react";
 import PersonelList from "./../pages/PersonelList";
 import Categories from "./Categories";
+import { Grid } from "semantic-ui-react";
 
 export default function Dashboard() {
   return (
     <div>
-      <Categories />
-      <PersonelList />
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={4}>
+            <Categories />
+          </Grid.Column>
+          <Grid.Column width={12}>
+            <PersonelList />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </div>
   );
 }

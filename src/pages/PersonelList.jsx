@@ -1,36 +1,39 @@
-import React from "react";
-import { Icon, Label, Menu, Table } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { Icon, Menu, Table } from "semantic-ui-react";
+import PersonelService from "../services/personelService";
 
 export default function PersonelList() {
+  const [personels, setPersonels] = useState([]);
+
+  useEffect(() => {
+    let personelService = new PersonelService();
+
+    personelService
+      .getPersonels()
+      .then((result) => setPersonels(result.data.data));
+  });
+
   return (
     <div>
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Header</Table.HeaderCell>
-            <Table.HeaderCell>Header</Table.HeaderCell>
-            <Table.HeaderCell>Header</Table.HeaderCell>
+            <Table.HeaderCell>Personel Adi</Table.HeaderCell>
+            <Table.HeaderCell>Personel Soyadi</Table.HeaderCell>
+            <Table.HeaderCell>Birim</Table.HeaderCell>
+            <Table.HeaderCell>Gorev</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
         <Table.Body>
-          <Table.Row>
-            <Table.Cell>
-              <Label ribbon>First</Label>
-            </Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-            <Table.Cell>Cell</Table.Cell>
-          </Table.Row>
+          {personels.map((personel) => (
+            <Table.Row key={personel.personelId}>
+              <Table.Cell>personel.personelAdi</Table.Cell>
+              <Table.Cell>Cell</Table.Cell>
+              <Table.Cell>Cell</Table.Cell>
+              <Table.Cell>Cell</Table.Cell>
+            </Table.Row>
+          ))}
         </Table.Body>
 
         <Table.Footer>
