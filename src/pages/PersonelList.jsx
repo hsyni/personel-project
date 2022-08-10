@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Icon, Menu, Table } from "semantic-ui-react";
 import PersonelService from "../services/personelService";
 
@@ -30,7 +31,11 @@ const PersonelList = () => {
         <Table.Body>
           {personels.map((personel) => (
             <Table.Row key={personel.personelId}>
-              <Table.Cell>{personel.personelAdi}</Table.Cell>
+              <Table.Cell>
+                <Link to={`/personels/${personel.personelId}`}>
+                  {personel.personelAdi}
+                </Link>
+              </Table.Cell>
               <Table.Cell>{personel.personelSoyadi}</Table.Cell>
               <Table.Cell>{personel.birim}</Table.Cell>
               <Table.Cell>{personel.gorev}</Table.Cell>

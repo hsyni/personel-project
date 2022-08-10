@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Container, Menu } from "semantic-ui-react";
 import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
+import { useNavigate } from "react-router";
 
 export default function Navi() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const history = useNavigate();
   function handleSignOut() {
     setIsAuthenticated(false);
+    history("/");
   }
 
   function handleSignIn() {
