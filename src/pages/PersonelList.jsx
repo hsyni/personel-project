@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Icon, Menu, Table } from "semantic-ui-react";
 import PersonelService from "../services/personelService";
 
-export default function PersonelList() {
+const PersonelList = () => {
   const [personels, setPersonels] = useState([]);
 
   useEffect(() => {
@@ -28,10 +30,10 @@ export default function PersonelList() {
         <Table.Body>
           {personels.map((personel) => (
             <Table.Row key={personel.personelId}>
-              <Table.Cell>personel.personelAdi</Table.Cell>
-              <Table.Cell>Cell</Table.Cell>
-              <Table.Cell>Cell</Table.Cell>
-              <Table.Cell>Cell</Table.Cell>
+              <Table.Cell>{personel.personelAdi}</Table.Cell>
+              <Table.Cell>{personel.personelSoyadi}</Table.Cell>
+              <Table.Cell>{personel.birim}</Table.Cell>
+              <Table.Cell>{personel.gorev}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
@@ -57,4 +59,6 @@ export default function PersonelList() {
       </Table>
     </div>
   );
-}
+};
+
+export default PersonelList;
