@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Icon, Menu, Table } from "semantic-ui-react";
-import PersonelService from "../services/personelService";
+import PersonelService from "../services/PersonelService";
 
 const PersonelList = () => {
   const [personels, setPersonels] = useState([]);

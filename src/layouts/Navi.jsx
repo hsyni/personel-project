@@ -1,35 +1,41 @@
-import React, { useState } from "react";
-import { Container, Menu } from "semantic-ui-react";
-import SignedOut from "./SignedOut";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { Container, Button, Menu, Icon } from "semantic-ui-react";
+import "../App.css";
 import SignedIn from "./SignedIn";
-import { useNavigate } from "react-router";
+import SignedOut from "./SignedOut";
 
 export default function Navi() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const history = useNavigate();
-  function handleSignOut() {
-    setIsAuthenticated(false);
-    history("/");
-  }
-
-  function handleSignIn() {
-    setIsAuthenticated(true);
-  }
+  const { authItem } = useSelector((state) => state.auth);
+  console.log(authItem);
 
   return (
     <div>
-      <Menu inverted fixed="top">
+      <Menu size="large" inverted stackable>
         <Container>
-          <Menu.Item name="home" />
-          <Menu.Item name="messages" />
+          <Menu.Item name="Ana Sayfa" as={Link} to={"/"}>
+            <Icon name="home" />
+            Ana Sayfa
+          </Menu.Item>
+          <Menu.Item name="İş ilanları" as={Link} to={"/jobads"} />
+          <Menu.Item name="Cvler" as={Link} to={"/cvs"} />
 
-          <Menu.Menu position="right">
-            {isAuthenticated ? (
-              <SignedIn signOut={handleSignOut} />
-            ) : (
-              <SignedOut signIn={handleSignIn} />
+          {/* <Menu.Menu position="right" style={{ margin: "0.5em" }}>
+            {authItem[0].loggedIn && authItem[0].user.userType === 2 && (
+              <Button primary as={Link} to={"/jobAdCreate"}>
+                İlan Ekle
+              </Button>
             )}
-          </Menu.Menu>
+            {authItem[0].loggedIn && authItem[0].user.userType === 1 && (
+              <Button color="red" as={Link} to={`/jobAdFavorites`}>
+                <Icon name="heart" />
+                Favori İlanlar
+              </Button>
+            )} */}
+
+          {authItem[0].loggedIn ? <SignedIn /> : <SignedOut />}
+          {/* </Menu.Menu> */}
         </Container>
       </Menu>
     </div>

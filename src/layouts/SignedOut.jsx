@@ -1,17 +1,19 @@
 import React from "react";
-import { Button, Menu } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 
-export default function SignedOut({ signIn }) {
+export default function SignedOut() {
   return (
     <div>
-      <Menu.Item>
-        <Button onClick={signIn} primary>
+      <Button.Group>
+        <Button as={Link} to={"/login"}>
           Giriş yap
         </Button>
-        <Button primary style={{ marginLeft: "0.5em" }}>
-          Kayıt ol
+        <Button.Or />
+        <Button positive as={Link} to={"/register"}>
+          Kaydol
         </Button>
-      </Menu.Item>
+      </Button.Group>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { FormField, Button, Label } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
+import DanistayTextInput from "../utilities/customFormControls/DanistayTextInput";
 
 export default function PersonelAdd() {
   const initialValues = {
@@ -29,24 +30,9 @@ export default function PersonelAdd() {
       }}
     >
       <Form className="ui form">
-        <FormField>
-          <Field name="ad" placeholder="Personel adı"></Field>
-          <ErrorMessage
-            name="ad"
-            render={(error) => (
-              <Label pointing basic color="red" content={error}></Label>
-            )}
-          ></ErrorMessage>
-        </FormField>
-        <FormField>
-          <Field name="soyad" placeholder="Personel Soyadı"></Field>
-          <ErrorMessage
-            name="soyad"
-            render={(error) => (
-              <Label pointing basic color="red" content={error}></Label>
-            )}
-          ></ErrorMessage>
-        </FormField>
+        <DanistayTextInput name="ad" placeholder="Personel Adı" />
+        <DanistayTextInput name="soyad" placeholder="Personel Soyadı" />
+
         <Button color="green" type="submit">
           Ekle
         </Button>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import { Divider, Header, Icon, Table, Button, Image } from "semantic-ui-react";
-import PersonelService from "../services/personelService";
+import PersonelService from "../services/PersonelService";
 import { useState, useEffect } from "react";
 
 export default function PersonelDetail() {
